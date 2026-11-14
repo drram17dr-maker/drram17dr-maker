@@ -1,0 +1,20 @@
+{
+  "type": "normal",
+  "backgroundColor": "#0a0a0b",
+  "foregroundColor": "#ececef",
+  "strongColor": "#ff4b55",
+  "weakColor": "#73737a",
+  "radarColor": "#e01520",
+  "growingAnimation": true,
+  "contribColors": ["#1c1c1f", "#5a0c11", "#8e1016", "#e01520", "#ff4b55"],
+  "darkMode": {
+    "type": "normal",
+    "backgroundColor": "#0a0a0b",
+    "foregroundColor": "#ececef",
+    "strongColor": "#ff4b55",
+    "weakColor": "#a1a1a8",
+    "radarColor": "#ff4b55",
+    "growingAnimation": true,
+    "contribColors": ["#161618", "#4a0a0e", "#8e1016", "#e01520", "#ff4b55"]
+  }
+}

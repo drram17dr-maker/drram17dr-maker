@@ -1,0 +1,33 @@
+# Builds the 3D contributions city in studio night tones once a day.
+# Uses the default GITHUB_TOKEN only: no personal access token and no stored secret.
+# Private commits are counted when "Include private contributions on my profile" is on
+# (Settings, then Public profile, then Contributions and activity).
+name: GitHub-Profile-3D-Contrib
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # 03:00 UTC, about 3am in London
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: generate-github-profile-3d-contrib
+    steps:
+      - uses: actions/checkout@v5
+      - uses: yoshi389111/github-profile-3d-contrib@v0.9.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: .github/profile-3d-settings.json
+      - name: Commit and push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A profile-3d-contrib
+          if git commit -m "Update contributions city"; then
+            git push
+          fi
